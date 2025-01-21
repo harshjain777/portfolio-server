@@ -1,16 +1,17 @@
-const express = require('express')
-const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser')
-const cors = require('cors');
-const ContUser = require('./routes/contact.route.js')
+import express from 'express'
+import mongoose from 'mongoose';
+import cookieParser from'cookie-parser'
+import cors from 'cors';
+import 'dotenv/config'
+import ContUser from './routes/contact.route.js'
 
 
 mongoose.connect(
-    "mongodb+srv://harshduggar7:harshduggar7@cluster0.vc96b.mongodb.net/ContactForm"
+    `${process.env.MONGODB_URL}`
 ).then(() => {console.log('MONGOBD CONNECTED')}).catch((error)=>{console.log(error)})
 
 const app = express()
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 
 // writing corrrsss
 app.use(
